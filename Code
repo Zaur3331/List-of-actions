@@ -1,0 +1,114 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<int> v1 {};
+
+    char choice;
+
+    do
+    {
+        cout << "---------------------------" << endl;
+        cout << "P - Print the elements" << endl;
+        cout << "A - Add an integer to the list" << endl;
+        cout << "M - Mean of the numbers" << endl;
+        cout << "S - Smallest integer in the list" << endl;
+        cout << "L - Largest integer in the list" << endl;
+        cout << "Q - Quit" << endl;
+        cout << "---------------------------" << endl;
+
+        cout << "Select a command from the list: ";
+        cin >> choice;
+
+        if (choice == 'a' || choice == 'A')
+        {
+            int istek_reqem = 0;
+            cout << "Enter an integer to add: ";
+            cin >> istek_reqem;
+            v1.push_back(istek_reqem);
+            cout << istek_reqem << " added!" << endl;
+        }
+        else if (choice == 'p' || choice == 'P')
+        {
+            if (v1.empty())
+            {
+                cout << "The list is empty." << endl;
+            }
+            else
+            {
+                cout << "Elements in the list: ";
+                for (int i = 0; i < v1.size(); i++)
+                {
+                    cout << v1[i] << " ";
+                }
+                cout << endl;
+            }
+        }
+        else if (choice == 's' || choice == 'S')
+        {
+            if (v1.empty())
+            {
+                cout << "List is empty." << endl;
+            }
+            else
+            {
+                int min_element = v1[0];
+                for (int i = 1; i < v1.size(); i++)
+                {
+                    if (v1[i] < min_element)
+                    {
+                        min_element = v1[i];
+                    }
+                }
+                cout << "Smallest element: " << min_element << endl;
+            }
+        }
+        else if (choice == 'l' || choice == 'L')
+        {
+            if (v1.empty())
+            {
+                cout << "List is empty." << endl;
+            }
+            else
+            {
+                int max_element = v1[0];
+                for (int i = 1; i < v1.size(); i++)
+                {
+                    if (v1[i] > max_element)
+                    {
+                        max_element = v1[i];
+                    }
+                }
+                cout << "Largest element: " << max_element << endl;
+            }
+        }
+        else if (choice == 'm' || choice == 'M')
+        {
+            if (v1.empty())
+            {
+                cout << "List is empty. Cannot find mean!" << endl;
+            }
+            else
+            {
+                int sum = 0;
+                for (int i = 0; i < v1.size(); i++)
+                {
+                    sum = sum + v1[i];
+                }
+                double mean = static_cast<double>(sum) / v1.size();
+                cout << "Mean is: " << mean << endl;
+            }
+        }
+        else if (choice != 'q' && choice != 'Q')
+        {
+            cout << "Please choose a valid command!" << endl;
+        }
+
+    } while (choice != 'q' && choice != 'Q');
+
+    cout << "Exiting the program. Goodbye!" << endl;
+
+    return 0;
+}
